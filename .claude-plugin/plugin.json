@@ -1,0 +1,22 @@
+{
+  "name": "idle-compact-warning",
+  "version": "0.1.0",
+  "description": "Sends a desktop notification before Claude Code's idle compaction, so you can come back while the full context is still there.",
+  "author": {
+    "name": "ohnotnow"
+  },
+  "userConfig": {
+    "notifyUrl": {
+      "type": "string",
+      "title": "Notify URL",
+      "description": "An HTTP endpoint that shows a notification; title and message are added as query parameters.",
+      "default": "http://localhost:8001/notify"
+    },
+    "minutes": {
+      "type": "number",
+      "title": "Warn after (minutes)",
+      "description": "How long a large session sits idle before the warning. Idle compaction happens at about 54.",
+      "default": 45
+    }
+  }
+}

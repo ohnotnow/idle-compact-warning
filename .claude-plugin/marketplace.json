@@ -1,0 +1,13 @@
+{
+  "name": "idle-compact-warning",
+  "description": "A Claude Code mod that warns you before idle compaction.",
+  "owner": {
+    "name": "ohnotnow"
+  },
+  "plugins": [
+    {
+      "name": "idle-compact-warning",
+      "source": "./"
+    }
+  ]
+}
