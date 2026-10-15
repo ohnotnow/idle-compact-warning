@@ -1,7 +1,8 @@
 {
   "name": "idle-compact-warning",
-  "version": "0.1.0",
-  "description": "Sends a desktop notification before Claude Code's idle compaction, so you can come back while the full context is still there.",
+  "version": "0.2.0",
+  "description": "Warns you before Claude Code's idle compaction, with a band above the prompt, a terminal notification and an optional notify URL, so you can come back while the full context is still there.",
+  "types": "./types/index.d.ts",
   "author": {
     "name": "ohnotnow"
   },

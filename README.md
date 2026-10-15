@@ -1,6 +1,6 @@
 # idle-compact-warning
 
-A Claude Code mod that sends you a desktop notification before Claude Code compacts an idle conversation.
+A Claude Code mod that warns you before Claude Code compacts an idle conversation.
 
 ## What it does
 
@@ -12,12 +12,17 @@ This mod starts a timer each time Claude finishes a turn in a conversation that 
 http://localhost:8001/notify?title=Claude%20Code&message=my-project%20has%20been%20idle%2045%20minutes%20and%20will%20compact%20soon.
 ```
 
-Any new turn cancels the timer. If the notification server does not answer, the mod shows a toast in Claude Code instead.
+At the same time it:
+
+- shows the same message in a band above the prompt, with a Dismiss button. Your next prompt clears it too.
+- sends it through Claude Code's own notification setting (`/config`, Notifications). That is written to the terminal, so it reaches you over SSH and inside tmux, where the notify URL may not. Choose `terminal_bell` if you want a plain bell that makes your terminal highlight the tab.
+
+Any new turn cancels the timer. If the notification server does not answer, the mod shows a toast in Claude Code as well.
 
 ## Prerequisites
 
 - Claude Code v2.1.290 or later.
-- Something listening for the notification. Any HTTP endpoint that accepts a GET with `title` and `message` query parameters will do.  See [this notification API server for example](https://github.com/ohnotnow/macos-notification-api-go)
+- Optionally, something listening at the notify URL. Any HTTP endpoint that accepts a GET with `title` and `message` query parameters will do.  See [this notification API server for example](https://github.com/ohnotnow/macos-notification-api-go). Without one, you still get the band and the terminal notification, plus a toast saying the server did not answer.
 
 ## Getting started
 
@@ -44,7 +49,7 @@ If you would rather idle compaction never happened, set `"idleCompaction": false
 
 ## Contributing
 
-Fork or clone the repository, make your change in `hooks/register.ts`, and run the tests:
+Fork or clone the repository, make your change in `hooks/register.tsx`, and run the tests:
 
 ```
 claude plugin test .
